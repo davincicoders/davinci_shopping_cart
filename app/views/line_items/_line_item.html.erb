@@ -1,0 +1,8 @@
+<tr class='<%= cycle("odd", "") %>' id='<%= dom_id(line_item) %>'>
+  <td class='name'>
+    <%= line_item.product.name %>
+  </td>
+  <td class='price'>
+    <%= number_to_currency(line_item.product.price) %>
+  </td>
+</tr>

@@ -1,0 +1,14 @@
+<h1>Your Cart</h1>
+
+<table class="cart">
+  <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+  </thead>
+
+  <tbody>
+    <%= render @cart.line_items %>
+  </tbody>
+</table>

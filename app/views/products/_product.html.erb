@@ -1,4 +1,4 @@
-<tr class='<%= cycle("odd", "") %>'>
+<tr class='<%= cycle("odd", "") %>' id='<%= dom_id(product) %>'>
   <td class='name'><%= product.name %></td>
   <td class='description'><%= product.description %></td>
   <td class='picture'><%= image_tag(product.image_url) %></td>

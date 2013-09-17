@@ -1,5 +1,9 @@
 <h1>Welcome to our Online Store</h1>
 
+<span class="cart">
+  <%= link_to "View Cart (#{cart_item_count(@cart)})", cart_path %>
+</span>
+
 <%= will_paginate @products %>
 
 <table class="products">
