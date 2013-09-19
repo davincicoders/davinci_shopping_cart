@@ -4,11 +4,20 @@
   <thead>
       <tr>
         <th>Name</th>
+        <th>Quantity</th>
         <th>Price</th>
+        <th>Total Price</th>
       </tr>
   </thead>
 
   <tbody>
     <%= render @cart.line_items %>
   </tbody>
+
 </table>
+
+<%= button_to 'Empty Cart', cart_path,
+              method: :delete,
+              data: {:confirm => 'Are you sure?'} %>
+
+
