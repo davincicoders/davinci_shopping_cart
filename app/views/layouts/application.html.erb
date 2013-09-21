@@ -2,38 +2,40 @@
 <html>
 <head>
   <title>DavinciShoppingCart</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 
 <body class="<%= controller.controller_name %>">
-    <div id="banner">
-      <%= image_tag("davinci_shopping.png") %>
-    </div>
+<div id="banner">
+  <%= image_tag("davinci_shopping.png") %>
+</div>
 
-    <div id="columns">
-      <div id="side">
-        <ul>
-          <li><%= link_to 'Home', root_path %></li>
-          <li><%= link_to 'Admin', products_path %></li>
-        </ul>
+<div id="columns">
+  <div id="side">
+    <ul>
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Admin', products_path %></li>
+    </ul>
 
-        <% if @cart.present? %>
-            <%= render partial: 'store/my_cart' %>
+    <% if controller_name == 'store' %>
+        <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+          <%= render partial: 'store/my_cart' %>
         <% end %>
-      </div>
+    <% end %>
+  </div>
 
-      <div id="main">
+  <div id="main">
 
-        <% flash.each do |key, value| %>
-          <div class='flash' id='<%= key %>'>
-            <%= value %>
-          </div>
-        <% end %>
+    <% flash.each do |key, value| %>
+        <div class='flash' id='<%= key %>'>
+          <%= value %>
+        </div>
+    <% end %>
 
-        <%= yield %>
-      </div>
-    </div>
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>

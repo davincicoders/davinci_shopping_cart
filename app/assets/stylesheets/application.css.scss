@@ -26,7 +26,7 @@
   background: #f5f5dc;
 
   #main {
-    margin-left: 125px;
+    margin-left: 250px;
     padding: 1px 1px 1px 10px;
     background: #E2DEDE;
   }
@@ -34,11 +34,13 @@
   #side {
     float: left;
     padding: 1px 2px;
-    width: 15px;
+    width: 240px;
     background: #f5f5dc;
+    min-height: 300px;
 
     ul {
       padding: 0;
+      height: 65px;
 
       li {
         list-style: none;

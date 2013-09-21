@@ -14,6 +14,12 @@ describe LineItemsController do
         }.to change(LineItem, :count).by(1)
       end
 
+      it "creates a new LineItem (AJAX)" do
+        expect {
+          xhr :post, :create, valid_attributes, valid_session
+        }.to change(LineItem, :count).by(1)
+      end
+
       it "redirects to the root path" do
         post :create, valid_attributes, valid_session
         response.should redirect_to(root_path)

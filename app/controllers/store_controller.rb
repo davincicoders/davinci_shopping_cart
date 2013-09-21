@@ -6,11 +6,12 @@ class StoreController < ApplicationController
     @products = Product.paginate(page: params[:page], per_page: 10)
   end
 
-  def my_cart
-  end
-
   def empty_cart
     @cart.line_items.clear
-    redirect_to root_path, notice: "Your cart is currently empty"
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Your cart is currently empty" }
+      format.js
+    end
   end
 end

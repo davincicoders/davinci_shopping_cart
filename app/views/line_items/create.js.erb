@@ -1,0 +1,10 @@
+$('#cart').html("<%= escape_javascript render partial: 'store/my_cart' %>");
+
+$('#cart').show('slide', 1000);
+
+$('.current_item').css(
+  {'background-color':'#FA272B'}
+).animate (
+  {'background-color':'#F5F5DC'},
+  1000
+);

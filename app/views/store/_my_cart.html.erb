@@ -18,6 +18,7 @@
 
 <%= button_to 'Empty Cart', cart_path,
               method: :delete,
+              remote: true,
               data: {:confirm => 'Are you sure?'} %>
 
 

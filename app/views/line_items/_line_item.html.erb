@@ -1,4 +1,5 @@
-<tr class='<%= cycle("odd", "") %>' id='<%= dom_id(line_item) %>'>
+<% current_item = line_item == @current_item ? 'current_item ' : '' %>
+<tr class='<%= current_item %><%= cycle("odd", "") %>' id='<%= dom_id(line_item) %>'>
   <td class='name'>
     <%= line_item.product.name %>
   </td>

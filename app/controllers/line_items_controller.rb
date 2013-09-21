@@ -11,8 +11,10 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if line_item.save
         format.html { redirect_to root_path, notice: 'Product added to cart' }
+        format.js { @current_item = line_item }
       else
         format.html { redirect_to root_path, flash: {error: 'Product could not be added to cart'} }
+        format.js
       end
     end
   rescue ActiveRecord::RecordNotFound
