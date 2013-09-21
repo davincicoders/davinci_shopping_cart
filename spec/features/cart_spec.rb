@@ -36,7 +36,6 @@ feature "Cart" do
     expect(page).to have_content("Product added to cart")
     expect(page).to have_content("View Cart (2 items)")
 
-    click_link "View Cart (2 items)"
     expect(page).to have_content("Name")
     expect(page).to have_content("Quantity")
     expect(page).to have_content("Price")
@@ -57,11 +56,15 @@ feature "Cart" do
       click_button 'Add to Cart'
     end
 
-    click_link "View Cart (1 item)"
-    expect(page).to have_content(product2.name)
+    within("table.cart") do
+      expect(page).to have_content(product2.name)
+    end
 
     click_button "Empty Cart"
     expect(page).to have_content("Your cart is currently empty")
-    expect(page).to_not have_content(product2.name)
+
+    within("table.cart") do
+      expect(page).to_not have_content(product2.name)
+    end
   end
 end

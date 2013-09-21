@@ -11,30 +11,40 @@ feature "Online Store" do
 
     expect(page).to have_content("Welcome to our Online Store")
 
-    expect(page).to have_css('tr', count: 11)
+    within("table.products") do
+      expect(page).to have_css('tr', count: 11)
+    end
   end
 
   scenario "Visitor paginates through products" do
     visit "/"
 
-    expect(page).to have_css('tr', count: 11)
+    within("table.products") do
+      expect(page).to have_css('tr', count: 11)
+    end
 
     within(first('.pagination')) do
       click_link "2"
     end
 
-    expect(page).to have_css('tr', count: 11)
+    within("table.products") do
+      expect(page).to have_css('tr', count: 11)
+    end
 
     within(first('.pagination')) do
       click_link "3"
     end
 
-    expect(page).to have_css('tr', count: 6)
+    within("table.products") do
+      expect(page).to have_css('tr', count: 6)
+    end
 
     within(first('.pagination')) do
       click_link "1"
     end
 
-    expect(page).to have_css('tr', count: 11)
+    within("table.products") do
+      expect(page).to have_css('tr', count: 11)
+    end
   end
 end

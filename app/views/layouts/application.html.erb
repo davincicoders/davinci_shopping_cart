@@ -18,6 +18,10 @@
           <li><%= link_to 'Home', root_path %></li>
           <li><%= link_to 'Admin', products_path %></li>
         </ul>
+
+        <% if @cart.present? %>
+            <%= render partial: 'store/my_cart' %>
+        <% end %>
       </div>
 
       <div id="main">
