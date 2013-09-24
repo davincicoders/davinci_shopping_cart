@@ -66,4 +66,23 @@ feature "Cart" do
 
     expect(page).to have_selector('#cart', visible: false)
   end
+
+  scenario "Visitor checks out" do
+    visit "/"
+
+    within("#product_#{product2.id}") do
+      click_button 'Add to Cart'
+    end
+
+    click_button "Checkout"
+
+    fill_in "Name", with: "Homer J. Simpson"
+    fill_in "Address", with: "742 Evergreen Terrace\nSpringfield, Illinois, 62701"
+    fill_in "Email", with: "homer@simpsons.net"
+    select("Check", from: "Pay type")
+    click_button "Place Order"
+
+    expect(page).to have_content("Thank you for your order.")
+    expect(page).to have_selector("#cart", visible: false)
+  end
 end

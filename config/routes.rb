@@ -1,4 +1,6 @@
 DavinciShoppingCart::Application.routes.draw do
+  resources :orders, except: [:edit, :update]
+
   post 'line_items' => 'line_items#create'
 
   get 'store' => 'store#index'
